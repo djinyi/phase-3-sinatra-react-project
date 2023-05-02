@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
   
   get "/posts" do
     webcomics = Webcomic.all.order(:title)
-    webcomics.to_json
+    webcomics.to_json(include: {creator: {only: [:name]}})
   end
 
   get "/creators" do
