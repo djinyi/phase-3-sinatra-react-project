@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
   get "/posts/:id" do
     webcomic = Webcomic.find(params[:id])
 
-    webcomic.to_json(only: [:id, :title, :description, :creator_id, :price])
+    webcomic.to_json(only: [:id, :title, :description, :creator_id, :price, :image])
   end
 
   post "/posts" do
