@@ -28,7 +28,8 @@ class ApplicationController < Sinatra::Base
       creator_id: params[:creator_id],
       genre: params[:genre],
       description: params[:description],
-      price: params[:price]
+      price: params[:price],
+      image: params[:image]
     )
     webcomic.to_json
 
