@@ -25,11 +25,10 @@ class ApplicationController < Sinatra::Base
   post "/posts" do
     webcomic = Webcomic.create(
       title: params[:title],
-      creator_id: params[:creator_id],
       genre: params[:genre],
       description: params[:description],
+      image: params[:image],
       price: params[:price],
-      image: params[:image]
     )
     webcomic.to_json
 
