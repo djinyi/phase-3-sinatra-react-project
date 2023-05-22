@@ -55,4 +55,18 @@ class ApplicationController < Sinatra::Base
     webcomic.to_json
   end
 
+  delete "/creators/:id" do
+    creator = Creator.find(params[:id])
+    creator.destroy
+    creator.to_json
+  end
+
+  put "/creators/:id" do
+    creator = Creator.find(params[:id])
+    creator.update(
+      id: params[:id]
+    )
+    creator.to_json
+  end
+
 end
