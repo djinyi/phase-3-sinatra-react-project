@@ -16,6 +16,13 @@ class ApplicationController < Sinatra::Base
     creator.to_json
   end
 
+  post "/creators" do
+    creator = Creator.create(
+      name: params[:name]
+    )
+    creator.to_json
+  end
+
   get "/posts/:id" do
     webcomic = Webcomic.find(params[:id])
 
