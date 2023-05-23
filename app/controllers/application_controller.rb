@@ -2,13 +2,13 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   get "/posts" do
-    webcomics = Webcomic.all.order(:title)
+    webcomics = Webcomic.all.order(:name)
     webcomics.to_json(include: {creator: {only: [:name]}})
   end
 
   get "/creators" do
     creators = Creator.all.order(:name)
-    creators.to_json
+    creators.to_json(include: {webcomics: {only: [:title]}})
   end
   
   get "/creators/:id" do
@@ -36,6 +36,7 @@ class ApplicationController < Sinatra::Base
       description: params[:description],
       image: params[:image],
       price: params[:price],
+      creator_id: params[:creator_id]
     )
     webcomic.to_json
 
